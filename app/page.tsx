@@ -39,7 +39,7 @@ export default function Home() {
           <div className="lg:col-span-8 space-y-8">
             <section className="group">
               <h2 className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em] mb-4 ml-2">Market Real-Time Feed</h2>
-              <TradingViewChart />
+              <TradingviewChart />
             </section>
             
             <section>
