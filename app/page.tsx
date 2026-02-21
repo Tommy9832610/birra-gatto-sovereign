@@ -1,9 +1,9 @@
 "use client";
 import React from 'react';
-import WhaleRadar from '@/components/WhaleRadar';
-import SecurityAudit from '@/components/SecurityAudit';
-import SecureVault from '@/components/SecureVault';
-import TradingViewChart from '@/components/TradingViewChart';
+import WhaleRadar from './components/WhaleRadar';
+import SecurityAudit from './components/SecurityAudit';
+import SecureVault from './components/SecureVault';
+import TradingViewChart from './components/TradingViewChart';
 
 export default function Home() {
   return (
