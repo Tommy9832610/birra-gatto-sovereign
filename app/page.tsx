@@ -1,3 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+declare global {
+  interface Window {
+    TradingView: any;
+  }
+}
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
 import Script from 'next/script';
