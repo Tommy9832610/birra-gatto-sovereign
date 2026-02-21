@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Radar, Activity } from 'lucide-react';
-
+interface Signal {
+  id: number;
+  pair: string;
+  amount: string;
+  type: string;
+  distance: number;
+  angle: number;
+}
 const WhaleRadar = () => {
-  const [signals, setSignals] = useState([]);
+  const [signals, setSignals] = useState([] as Signal[]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -31,10 +38,10 @@ const WhaleRadar = () => {
       <div className="relative aspect-square w-full rounded-full border-2 border-blue-900/20 flex items-center justify-center overflow-hidden">
         <div className="absolute w-1/2 h-1/2 origin-bottom-right bottom-1/2 right-1/2 bg-gradient-to-tr from-transparent to-blue-500/20 border-r border-blue-400/30 animate-spin" style={{animationDuration: '4s'}} />
         {signals.map((s) => (
-          <div key={s.id} className={`absolute w-3 h-3 rounded-full blur-[2px] animate-ping ${s.type === 'BUY' ? 'bg-green-400' : 'bg-red-400'}`}
-            style={{ transform: `rotate(${s.angle}deg) translate(${s.distance}px)` }}
-          />
-        ))}
+      <div key={s.id} className={`absolute w-3 h-3 rounded-full blur-[2px] animate-ping ${s.type === 'BUY' ? 'bg-green-400' : 'bg-red-400'}`}
+              style={{ transform: `rotate(${s.angle}deg) translate(${s.distance}px)` }}
+            />
+          ))}
         <Activity className="text-blue-500/40" size={40} />
       </div>
     </div>
