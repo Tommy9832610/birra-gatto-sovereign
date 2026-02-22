@@ -4,6 +4,7 @@ declare global {
     TradingView: any;
   }
 }
+
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
 import Script from 'next/script';
@@ -75,10 +76,7 @@ export default function PredatorSovereign() {
 
   return (
     <main className="min-h-screen bg-[#050505] text-[#e0e0e0] p-4 md:p-10 font-sans selection:bg-green-500/30">
-      {/* Script Esterno TradingView */}
       <Script src="https://s3.tradingview.com/tv.js" strategy="lazyOnload" />
-      
-      {/* Sfondo Matrix */}
       <canvas ref={canvasRef} className={`fixed top-0 left-0 z-[-1] ${showMatrix ? 'block' : 'hidden'} pointer-events-none`} />
 
       <div className="max-w-[550px] mx-auto bg-[#121212]/98 border border-[#222] rounded-[30px] p-6 shadow-[0_30px_100px_rgba(0,0,0,1)] backdrop-blur-xl relative z-10">
@@ -89,11 +87,12 @@ export default function PredatorSovereign() {
             Official Security Intel: NordVPN
           </div>
           <br />
+          {/* LOGO GATTO SISTEMATO CON FORMATO .JPG */}
           <img 
-            src="/logo.png" 
-            className="w-20 h-20 rounded-full border-2 border-[#f3ba2f] p-1 bg-black mx-auto shadow-[0_0_20px_rgba(243,186,47,0.3)]" 
-            alt="Sovereign Logo" 
-            onError={(e) => (e.currentTarget.src = 'https://via.placeholder.com/80/000000/f3ba2f?text=SOVEREIGN')} 
+            src="/gatto.jpg" 
+            className="w-20 h-20 rounded-full border-2 border-[#f3ba2f] p-1 bg-black mx-auto shadow-[0_0_20px_rgba(243,186,47,0.3)] object-cover" 
+            alt="Gatto Comandante" 
+            onError={(e) => (e.currentTarget.src = 'https://via.placeholder.com/80/000000/f3ba2f?text=GATTO')} 
           />
           <h1 className="text-2xl font-black mt-3 tracking-tighter uppercase">Predator Sovereign <span className="text-[#f3ba2f]">v25.0</span></h1>
           <p className="text-[8px] text-[#444] tracking-[3px] font-mono mt-1">8700K_ULTRA_POWERED // SYSTEM_ONLINE</p>
@@ -139,7 +138,6 @@ export default function PredatorSovereign() {
             toggle('trade');
             if (activeCard !== 'trade') {
               setTimeout(() => {
-                // @ts-ignore
                 if (window.TradingView) {
                   new window.TradingView.widget({"autosize":true,"symbol":"BINANCE:BTCUSDT","theme":"dark","container_id":"tv_chart","hide_top_toolbar":true,"interval":"1","style":"1","locale":"it","toolbar_bg":"#000000","hide_legend":true,"backgroundColor":"#000000"});
                 }
@@ -151,7 +149,7 @@ export default function PredatorSovereign() {
           </div>
           <div className="px-5 pb-5">
             <div id="tv_chart" className="h-[280px] rounded-xl overflow-hidden border border-[#222]" />
-            <a href="https://www.binance.com/it/register?ref=1218709503" target="_blank" className="block w-full text-center bg-[#f3ba2f] text-black p-4 rounded-xl font-black text-[10px] uppercase mt-4 hover:scale-[1.02] transition-transform">ATTIVA OPERATIVITÀ BINANCE</a>
+            <a href="https://www.binance.com/it/register?ref=1218709503" target="_blank" rel="noreferrer" className="block w-full text-center bg-[#f3ba2f] text-black p-4 rounded-xl font-black text-[10px] uppercase mt-4 hover:scale-[1.02] transition-transform">ATTIVA OPERATIVITÀ BINANCE</a>
           </div>
         </div>
 
@@ -164,13 +162,13 @@ export default function PredatorSovereign() {
           <div className="px-5 pb-5">
             <div className="bg-black p-4 rounded-xl font-mono text-[10px] border border-[#222] leading-relaxed shadow-inner">
               SYSTEM_IP: <span style={{ color: ipData.color }}>{ipData.ip}</span><br />
-              ENCRYPTION: <span className="text-red-500">DISABLED (EXPOSED)</span><br />
-              TUNNEL: <span className="text-red-500">NONE</span>
+              ENCRYPTION: <span className="text-red-500">{ipData.status === "BLINDATO" ? "ACTIVE (AES-256)" : "DISABLED (EXPOSED)"}</span><br />
+              TUNNEL: <span className={ipData.status === "BLINDATO" ? "text-green-500" : "text-red-500"}>{ipData.status === "BLINDATO" ? "NORDLYNX" : "NONE"}</span>
             </div>
             <div className="bg-red-500/5 border-l-4 border-red-500 p-4 rounded-r-lg mt-4 text-[10px] text-[#ccc] leading-relaxed">
-              <b className="text-white">TECHNICAL VERDICT:</b> Il traffico è attualmente intercettabile. Per operare in sicurezza su Binance, attiva il protocollo <span className="text-[#007bff] font-bold">NordLynx</span>.
+              <b className="text-white">TECHNICAL VERDICT:</b> {ipData.status === "BLINDATO" ? "Connessione sicura. Operatività autorizzata." : "Il traffico è attualmente intercettabile. Per operare in sicurezza su Binance, attiva il protocollo NordLynx."}
             </div>
-            <a href="https://nordvpn.com/it/" target="_blank" className="block w-full text-center bg-[#007bff] text-white p-4 rounded-xl font-black text-[10px] uppercase mt-4 shadow-lg shadow-blue-500/20 hover:bg-blue-600 transition-colors">PROTEGGI SESSIONE CON NORDVPN</a>
+            <a href="https://nordvpn.com/it/" target="_blank" rel="noreferrer" className="block w-full text-center bg-[#007bff] text-white p-4 rounded-xl font-black text-[10px] uppercase mt-4 shadow-lg shadow-blue-500/20 hover:bg-blue-600 transition-colors">PROTEGGI SESSIONE CON NORDVPN</a>
           </div>
         </div>
 
@@ -208,10 +206,9 @@ export default function PredatorSovereign() {
         </div>
       </div>
 
-      {/* CUSTOM ANIMATIONS */}
       <style jsx global>{`
         @keyframes scroll {
-          0% { transform: translateX(100%; }
+          0% { transform: translateX(100%); }
           100% { transform: translateX(-100%); }
         }
         .no-scrollbar::-webkit-scrollbar { display: none; }
