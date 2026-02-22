@@ -1,13 +1,11 @@
 import './globals.css';
-import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export const metadata: Metadata = {
-  title: 'PREDATOR SOVEREIGN v23.1',
-  description: 'Advanced Crypto Intelligence & Secure Vault',
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
+export const metadata = {
+  title: 'PREDATOR SOVEREIGN v25.0',
+  description: 'Advanced Crypto Intelligence',
 };
 
 export default function RootLayout({
@@ -16,8 +14,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="it" className="bg-black">
-      <body className={`${inter.className} antialiased bg-black text-white selection:bg-blue-500/30`}>
+    <html lang="it">
+      <body className={`${inter.className} bg-[#050505] text-white antialiased`}>
         {children}
       </body>
     </html>

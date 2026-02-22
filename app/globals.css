@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* Corazza di emergenza per il Predator */
+body {
+  background-color: #050505 !important;
+  color: white !important;
+  margin: 0;
+  padding: 0;
+}
+
+/* Rende i link simili a pulsanti finché Tailwind non si sveglia */
+a {
+  text-decoration: none;
+  display: inline-block;
+}
