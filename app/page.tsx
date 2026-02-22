@@ -21,9 +21,11 @@ export default function PredatorSovereign() {
       if (typeof window.TradingView !== "undefined" && container.current) {
         new window.TradingView.MediumWidget({
           symbols: [
-            ["Binance", "BTCUSDT|1M"],
-            ["Binance", "ETHUSDT|1M"],
-            ["Binance", "BNBUSDT|1M"]
+           symbols: [
+  ["BTC", "BINANCE:BTCUSDT|1M"],
+  ["ETH", "BINANCE:ETHUSDT|1M"],
+  ["BNB", "BINANCE:BNBUSDT|1M"]
+], 
           ],
           chartOnly: false,
           width: "100%",
@@ -58,7 +60,7 @@ export default function PredatorSovereign() {
       <div className="pt-12 pb-8 text-center bg-gradient-to-b from-[#111] to-transparent">
         <div className="relative inline-block">
           <img 
-            src="/gatto.jpg" 
+            src="/gatto.jpeg" 
             className="w-24 h-24 rounded-full border-2 border-[#f3ba2f] p-1 bg-black mx-auto shadow-[0_0_30px_rgba(243,186,47,0.4)] transition-transform hover:scale-105 duration-500" 
             alt="Gatto Comandante"
             onError={(e) => (e.currentTarget.src = 'https://via.placeholder.com/100/000000/f3ba2f?text=SOVEREIGN')}
