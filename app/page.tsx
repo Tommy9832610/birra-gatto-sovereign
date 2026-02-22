@@ -12,7 +12,6 @@ export default function PredatorSovereign() {
   const container = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Caricamento Script TradingView
     const script = document.createElement("script");
     script.src = "https://s3.tradingview.com/tv.js";
     script.type = "text/javascript";
@@ -21,11 +20,9 @@ export default function PredatorSovereign() {
       if (typeof window.TradingView !== "undefined" && container.current) {
         new window.TradingView.MediumWidget({
           symbols: [
-           symbols: [
-  ["BTC", "BINANCE:BTCUSDT|1M"],
-  ["ETH", "BINANCE:ETHUSDT|1M"],
-  ["BNB", "BINANCE:BNBUSDT|1M"]
-], 
+            ["BTC", "BINANCE:BTCUSDT|1M"],
+            ["ETH", "BINANCE:ETHUSDT|1M"],
+            ["BNB", "BINANCE:BNBUSDT|1M"]
           ],
           chartOnly: false,
           width: "100%",
@@ -56,7 +53,6 @@ export default function PredatorSovereign() {
   return (
     <main className="min-h-screen bg-[#050505] text-white font-sans selection:bg-[#f3ba2f] selection:text-black">
       
-      {/* HEADER / LOGO SECTION */}
       <div className="pt-12 pb-8 text-center bg-gradient-to-b from-[#111] to-transparent">
         <div className="relative inline-block">
           <img 
@@ -72,12 +68,11 @@ export default function PredatorSovereign() {
         <h1 className="mt-6 text-4xl font-black tracking-tighter italic uppercase text-transparent bg-clip-text bg-gradient-to-r from-white via-[#f3ba2f] to-white">
           Predator Sovereign v25.0
         </h1>
-        <p className="text-[10px] text-gray-500 tracking-[0.3em] uppercase mt-1">Advanced Intelligence Dashboard</p>
+        <p className="text-[10px] text-gray-500 tracking-[0.3em] uppercase mt-1 italic">Advanced Intelligence Dashboard</p>
       </div>
 
       <div className="max-w-6xl mx-auto px-4 space-y-6 pb-20">
         
-        {/* NEWS SCROLLER */}
         <div className="bg-[#0a0a0a] border border-white/5 overflow-hidden py-2 rounded-sm italic text-xs">
           <div className="flex animate-[scroll_25s_linear_infinite] whitespace-nowrap space-x-12 text-[#f3ba2f]">
             <span>SYSTEM_READY: ENCRYPTION_ACTIVE</span>
@@ -88,7 +83,6 @@ export default function PredatorSovereign() {
           </div>
         </div>
 
-        {/* MARKET TERMINAL (TRADING VIEW) */}
         <section className="bg-[#0f0f0f] border border-white/10 rounded-xl overflow-hidden shadow-2xl">
           <div className="p-4 border-b border-white/5 flex justify-between items-center bg-[#121212]">
             <h2 className="text-xs font-bold tracking-widest text-gray-400 uppercase flex items-center gap-2">
@@ -99,7 +93,6 @@ export default function PredatorSovereign() {
           <div id="tradingview_widget" ref={container} className="w-full"></div>
         </section>
 
-        {/* ACTION BUTTONS (REFERRALS) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <a 
             href="https://www.binance.com/it/register?ref=1218709503" 
@@ -111,7 +104,7 @@ export default function PredatorSovereign() {
               <span className="text-[10px] font-black uppercase tracking-widest opacity-60">Binance Exchange</span>
               <h3 className="text-xl font-black italic">ATTIVA OPERATIVITÀ BINANCE</h3>
             </div>
-            <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:scale-125 transition-transform">
+            <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:scale-125 transition-transform text-4xl">
               ₿
             </div>
           </a>
@@ -126,7 +119,7 @@ export default function PredatorSovereign() {
               <span className="text-[10px] font-black uppercase tracking-widest opacity-60">Session Protection</span>
               <h3 className="text-xl font-black italic">PROTEGGI SESSIONE NORDVPN</h3>
             </div>
-            <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:scale-125 transition-transform">
+            <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:scale-125 transition-transform text-4xl">
               🛡️
             </div>
           </a>
@@ -134,7 +127,6 @@ export default function PredatorSovereign() {
 
       </div>
 
-      {/* FOOTER */}
       <footer className="fixed bottom-0 w-full bg-black/80 backdrop-blur-md border-t border-white/5 p-4 text-center">
         <p className="text-[9px] text-gray-600 uppercase tracking-[0.5em]">
           Powered by <span className="text-white font-bold">8700K Intelligence</span> — &copy; 2026 Sovereign Systems
