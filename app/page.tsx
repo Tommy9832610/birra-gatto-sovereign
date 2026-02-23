@@ -114,7 +114,7 @@ export default function PredatorSovereign() {
           </a>
 
           <a 
-            href="https://nordvpn.com" 
+            href="https://go.nordvpn.net/aff_c?offer_id=15&aff_id=141624&url_id=902" 
             target="_blank" 
             rel="noopener noreferrer"
             className="group relative overflow-hidden bg-[#007bff] text-white p-6 rounded-xl transition-all hover:scale-[1.02] active:scale-95 shadow-[0_8px_20px_rgba(0,123,255,0.15)]"
