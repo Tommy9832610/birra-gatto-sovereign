@@ -6,10 +6,14 @@ declare global {
 }
 
 "use client";
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 export default function PredatorSovereign() {
   const container = useRef<HTMLDivElement>(null);
+  
+  // Riferimenti e Stato per l'Audio Cyberpunk
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -49,6 +53,21 @@ export default function PredatorSovereign() {
     };
     document.head.appendChild(script);
   }, []);
+
+  // Funzioni per controllare l'audio
+  const handlePlay = () => {
+    if (audioRef.current) {
+      audioRef.current.play();
+      setIsPlaying(true);
+    }
+  };
+
+  const handlePause = () => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    }
+  };
 
   return (
     <main className="min-h-screen bg-[#050505] text-white font-sans selection:bg-[#f3ba2f] selection:text-black">
@@ -129,40 +148,53 @@ export default function PredatorSovereign() {
           </a>
         </div>
 
-        {/* MODULO CYBER-AUDIO */}
+        {/* MODULO CYBER-AUDIO WINAMP */}
         <div className="bg-black/40 border border-[#00ffcc]/30 p-4 rounded-xl backdrop-blur-md flex flex-col justify-between shadow-[0_0_15px_rgba(0,255,204,0.1)] max-w-md mx-auto w-full mt-4">
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-[#00ffcc] font-black tracking-widest text-xs uppercase">Winamp Protocol</h3>
-            <span className="text-[10px] text-green-400 animate-pulse">● ONLINE</span>
+            <span className={`text-[10px] font-bold ${isPlaying ? 'text-green-400 animate-pulse' : 'text-red-500'}`}>
+              {isPlaying ? '● ONLINE' : '○ STANDBY'}
+            </span>
           </div>
           
           {/* Display Equalizzatore */}
-          <div className="bg-[#0a0a0a] border border-gray-800 rounded p-2 h-20 flex items-end justify-between gap-[3px] overflow-hidden">
+          <div className="bg-[#0a0a0a] border border-gray-800 rounded p-2 h-20 flex items-end justify-between gap-[3px] overflow-hidden transition-all duration-500">
             {['40%', '80%', '60%', '100%', '30%', '70%', '90%', '50%', '80%', '40%', '100%', '60%', '20%', '80%', '50%', '90%'].map((height, i) => (
               <div 
                 key={i}
-                className="w-full bg-gradient-to-t from-green-500 via-yellow-400 to-red-500 rounded-t-[1px] opacity-80 animate-pulse"
+                className={`w-full bg-gradient-to-t from-green-500 via-yellow-400 to-red-500 rounded-t-[1px] transition-all duration-300 ${isPlaying ? 'animate-pulse opacity-80' : 'opacity-20'}`}
                 style={{ 
-                  height: height,
+                  height: isPlaying ? height : '10%',
                   animationDelay: `${i * 0.1}s` 
                 }}
               ></div>
             ))}
           </div>
 
-          {/* Track Info */}
+          {/* Track Info (File Audio Nascosto) */}
           <div className="mt-4 text-center bg-black/50 py-1 rounded border border-gray-800">
-            <p className="text-[#00ffcc] text-xs font-mono truncate animate-pulse">
-              ▶ TRACCIA_01_PREDATOR.mp3
+            <audio ref={audioRef} src="/song.mp3" loop />
+            <p className="text-[#00ffcc] text-xs font-mono truncate">
+              {isPlaying ? '▶ TRACCIA_01_PREDATOR.mp3 - SYNC ACTIVE...' : '⏸ SYSTEM_PAUSED'}
             </p>
           </div>
 
-          {/* Controlli Winamp */}
+          {/* Controlli Reali Winamp */}
           <div className="flex justify-center gap-6 mt-4">
-            <button className="text-gray-500 hover:text-[#00ffcc] transition-colors text-xl active:scale-95">⏮</button>
-            <button className="text-[#00ffcc] hover:text-white transition-colors text-2xl active:scale-95 drop-shadow-[0_0_8px_rgba(0,255,204,0.8)]">▶</button>
-            <button className="text-gray-500 hover:text-[#00ffcc] transition-colors text-xl active:scale-95">⏸</button>
-            <button className="text-gray-500 hover:text-[#00ffcc] transition-colors text-xl active:scale-95">⏭</button>
+            <button className="text-gray-600 cursor-not-allowed text-xl">⏮</button>
+            <button 
+              onClick={handlePlay} 
+              className={`transition-all text-2xl active:scale-95 ${isPlaying ? 'text-white drop-shadow-[0_0_8px_rgba(0,255,204,0.8)] scale-110' : 'text-[#00ffcc] hover:text-white'}`}
+            >
+              ▶
+            </button>
+            <button 
+              onClick={handlePause} 
+              className={`transition-all text-xl active:scale-95 ${!isPlaying ? 'text-white drop-shadow-[0_0_8px_rgba(255,0,0,0.8)]' : 'text-gray-500 hover:text-red-500'}`}
+            >
+              ⏸
+            </button>
+            <button className="text-gray-600 cursor-not-allowed text-xl">⏭</button>
           </div>
         </div>
 
