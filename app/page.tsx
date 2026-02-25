@@ -160,4 +160,26 @@ export default function PredatorSovereign() {
           {/* Controlli Winamp */}
           <div className="flex justify-center gap-6 mt-4">
             <button className="text-gray-500 hover:text-[#00ffcc] transition-colors text-xl active:scale-95">⏮</button>
-            <button className="text-[#00ffcc] hover:text-white transition-colors text-2xl active:scale-95 drop-shadow-[0_0_8px_rgba(0,255,2
+            <button className="text-[#00ffcc] hover:text-white transition-colors text-2xl active:scale-95 drop-shadow-[0_0_8px_rgba(0,255,204,0.8)]">▶</button>
+            <button className="text-gray-500 hover:text-[#00ffcc] transition-colors text-xl active:scale-95">⏸</button>
+            <button className="text-gray-500 hover:text-[#00ffcc] transition-colors text-xl active:scale-95">⏭</button>
+          </div>
+        </div>
+
+      </div>
+
+      <footer className="fixed bottom-0 w-full bg-black/90 backdrop-blur-md border-t border-white/5 p-4 text-center z-50">
+        <p className="text-[9px] text-gray-600 uppercase tracking-[0.5em]">
+          Powered by <span className="text-white font-bold">8700K Intelligence</span> — &copy; 2026 Sovereign Systems
+        </p>
+      </footer>
+
+      <style jsx global>{`
+        @keyframes scroll {
+          0% { transform: translateX(50%); }
+          100% { transform: translateX(-100%); }
+        }
+      `}</style>
+    </main>
+  );
+}
