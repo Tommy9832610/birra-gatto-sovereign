@@ -173,7 +173,7 @@ export default function PredatorSovereign() {
 
           {/* Track Info (File Audio Nascosto) */}
           <div className="mt-4 text-center bg-black/50 py-1 rounded border border-gray-800">
-            <audio ref={audioRef} src="/song.mp3" loop />
+           <audio ref={audioRef} src="/song.mp3" loop controls className="w-full mt-2" /> 
             <p className="text-[#00ffcc] text-xs font-mono truncate">
               {isPlaying ? '▶ TRACCIA_01_PREDATOR.mp3 - SYNC ACTIVE...' : '⏸ SYSTEM_PAUSED'}
             </p>
