@@ -129,20 +129,35 @@ export default function PredatorSovereign() {
           </a>
         </div>
 
-      </div>
+        {/* MODULO CYBER-AUDIO */}
+        <div className="bg-black/40 border border-[#00ffcc]/30 p-4 rounded-xl backdrop-blur-md flex flex-col justify-between shadow-[0_0_15px_rgba(0,255,204,0.1)] max-w-md mx-auto w-full mt-4">
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="text-[#00ffcc] font-black tracking-widest text-xs uppercase">Winamp Protocol</h3>
+            <span className="text-[10px] text-green-400 animate-pulse">● ONLINE</span>
+          </div>
+          
+          {/* Display Equalizzatore */}
+          <div className="bg-[#0a0a0a] border border-gray-800 rounded p-2 h-20 flex items-end justify-between gap-[3px] overflow-hidden">
+            {['40%', '80%', '60%', '100%', '30%', '70%', '90%', '50%', '80%', '40%', '100%', '60%', '20%', '80%', '50%', '90%'].map((height, i) => (
+              <div 
+                key={i}
+                className="w-full bg-gradient-to-t from-green-500 via-yellow-400 to-red-500 rounded-t-[1px] opacity-80 animate-pulse"
+                style={{ 
+                  height: height,
+                  animationDelay: `${i * 0.1}s` 
+                }}
+              ></div>
+            ))}
+          </div>
 
-      <footer className="fixed bottom-0 w-full bg-black/90 backdrop-blur-md border-t border-white/5 p-4 text-center z-50">
-        <p className="text-[9px] text-gray-600 uppercase tracking-[0.5em]">
-          Powered by <span className="text-white font-bold">8700K Intelligence</span> — &copy; 2026 Sovereign Systems
-        </p>
-      </footer>
+          {/* Track Info */}
+          <div className="mt-4 text-center bg-black/50 py-1 rounded border border-gray-800">
+            <p className="text-[#00ffcc] text-xs font-mono truncate animate-pulse">
+              ▶ TRACCIA_01_PREDATOR.mp3
+            </p>
+          </div>
 
-      <style jsx global>{`
-        @keyframes scroll {
-          0% { transform: translateX(50%); }
-          100% { transform: translateX(-100%); }
-        }
-      `}</style>
-    </main>
-  );
-}
+          {/* Controlli Winamp */}
+          <div className="flex justify-center gap-6 mt-4">
+            <button className="text-gray-500 hover:text-[#00ffcc] transition-colors text-xl active:scale-95">⏮</button>
+            <button className="text-[#00ffcc] hover:text-white transition-colors text-2xl active:scale-95 drop-shadow-[0_0_8px_rgba(0,255,2
